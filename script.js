@@ -137,6 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
             totalAmount.textContent = '0';
             return;
         }
+        
 
         let total = 0;
         selectedSeats.forEach(seat => {
