@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Venue Ticketing System</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="site-header">
+        <h1>Concert Hall</h1>
+        <p>Interactive Venue Ticketing System</p>
+    </header>
+
+    <main class="container">
+        <section class="intro">
+            <h2>Choose Your Seat</h2>
+            <p>Select a seating zone to explore ticket prices.</p>
+        </section>
+
+        <section class="legend" aria-label="Ticket prices">
+            <div class="legend-item">
+                <span class="color-box vip"></span>
+                <div>
+                    <h3>VIP</h3>
+                    <p>150 AZN</p>
+                </div>
+            </div>
+
+            <div class="legend-item">
+                <span class="color-box premium"></span>
+                <div>
+                    <h3>Premium</h3>
+                    <p>80 AZN</p>
+                </div>
+            </div>
+
+            <div class="legend-item">
+                <span class="color-box standard"></span>
+                <div>
+                    <h3>Standard</h3>
+                    <p>50 AZN</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="venue">
+            <div class="stage">
+                <span>STAGE</span>
+            </div>
+
+            <div class="seating-area">
+                <section class="zone vip-zone">
+                    <h3>VIP Zone</h3>
+                    <div class="seats" id="vip-seats"></div>
+                </section>
+
+                <section class="zone premium-zone">
+                    <h3>Premium Zone</h3>
+                    <div class="seats" id="premium-seats"></div>
+                </section>
+
+                <section class="zone standard-zone">
+                    <h3>Standard Zone</h3>
+                    <div class="seats" id="standard-seats"></div>
+                </section>
+            </div>
+        </section>
+
+        <section class="details" aria-live="polite">
+            <h2>Seat Information</h2>
+            <p id="seat-info">Select a seat to see its details.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Web &amp; Mobile I Student Project</p>
+    </footer>
+</body>
+</html>
