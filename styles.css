@@ -1,247 +1,284 @@
-
-:root {
-    --background: #ffffff;
-    --surface: #f5f5f7;
-    --text: #24212b;
-    --muted: #77717f;
-    --vip: #7b2cbf;
-    --premium: #b58ad9;
-    --standard: #dcd6e4;
-    --border: #e5e1e9;
-}
-
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background: var(--background);
-    color: var(--text);
-    line-height: 1.6;
+    background-color: #f1f5f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
 }
 
-.site-header {
-    text-align: center;
-    padding: 32px 16px;
-    background: #ffffff;
-    border-bottom: 1px solid var(--border);
+.main-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 950px;
+    width: 100%;
 }
 
-.site-header h1 {
-    font-size: 30px;
-    letter-spacing: 1px;
+/* YUXARI HİSSƏ - INSPECTOR PANEL */
+.top-inspector-panel {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 20px 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
 }
 
-.site-header p {
-    color: var(--muted);
-    margin-top: 5px;
+.inspector-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #f1f5f9;
+    padding-bottom: 12px;
+    margin-bottom: 15px;
 }
 
-.container {
-    width: min(100% - 32px, 1000px);
-    margin: 32px auto;
-}
-
-.intro {
-    text-align: center;
-    margin-bottom: 28px;
-}
-
-.intro h2 {
-    font-size: 25px;
-}
-
-.intro p {
-    color: var(--muted);
+.inspector-header h2 {
+    font-size: 18px;
+    color: #1e293b;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .legend {
     display: flex;
-    justify-content: center;
-    gap: 28px;
-    flex-wrap: wrap;
-    margin-bottom: 32px;
+    gap: 15px;
 }
 
 .legend-item {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 6px;
+    font-size: 13px;
+    color: #64748b;
+    font-weight: 500;
 }
 
-.legend-item h3 {
-    font-size: 15px;
+.legend-item .box {
+    width: 14px;
+    height: 14px;
+    border: 1.5px solid #334155;
+    border-radius: 3px;
 }
 
-.legend-item p {
-    color: var(--muted);
+.legend-item .box.free { background-color: #ffffff; }
+.legend-item .box.selected { background-color: #22c55e; border-color: #16a34a; }
+.legend-item .box.occupied { background-color: #64748b; }
+
+.inspector-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.selected-seats-box {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 280px;
+}
+
+.selected-seats-box .label {
     font-size: 14px;
+    font-weight: 600;
+    color: #475569;
+    white-space: nowrap;
 }
 
-.color-box {
-    width: 20px;
-    height: 20px;
-    border-radius: 5px;
+.seats-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    max-height: 70px;
+    overflow-y: auto;
 }
 
-.vip {
-    background: var(--vip);
-}
-
-.premium {
-    background: var(--premium);
-}
-
-.standard {
-    background: var(--standard);
-}
-
-.venue {
-    background: var(--surface);
-    border: 1px solid var(--border);
+.seat-tag {
+    background-color: #dcfce7;
+    color: #15803d;
+    border: 1px solid #86efac;
+    padding: 4px 10px;
     border-radius: 20px;
-    padding: 24px;
+    font-size: 12px;
+    font-weight: 600;
 }
 
-.stage {
-    width: 65%;
-    margin: 0 auto 32px;
-    padding: 14px;
-    text-align: center;
-    background: #e9e3ef;
-    border-radius: 50% 50% 12px 12px / 100% 100% 12px 12px;
-    letter-spacing: 4px;
-    font-weight: bold;
+.empty-msg {
+    color: #94a3b8;
+    font-size: 13px;
+    font-style: italic;
 }
 
-.seating-area {
+.checkout-box {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.price-info {
+    font-size: 15px;
+    color: #334155;
+}
+
+.price-info strong {
+    font-size: 22px;
+    color: #0f172a;
+    margin-left: 5px;
+}
+
+.buy-btn {
+    background-color: #2563eb;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s;
+}
+
+.buy-btn:hover:not(:disabled) {
+    background-color: #1d4ed8;
+}
+
+.buy-btn:disabled {
+    background-color: #cbd5e1;
+    cursor: not-allowed;
+}
+
+/* AŞAĞI HİSSƏ - VENUE CARD */
+.venue-card {
+    position: relative;
+    background-color: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    height: 520px; /* Kiçildilmiş zal hündürlüyü */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Zoom İdarəetmə Paneli */
+.zoom-controls {
+    position: absolute;
+    top: 15px;
+    right: 15px;
     display: flex;
     flex-direction: column;
-    gap: 22px;
+    gap: 6px;
+    z-index: 10;
 }
 
-.zone {
-    padding: 18px;
-    border-radius: 14px;
-    text-align: center;
-}
-
-.zone h3 {
-    margin-bottom: 16px;
-}
-
-.vip-zone {
-    background: #eee2f8;
-    border: 1px solid #d7b9ef;
-}
-
-.premium-zone {
-    background: #f4ecfa;
-    border: 1px solid #e3d1f2;
-}
-
-.standard-zone {
-    background: #f8f6fa;
-    border: 1px solid var(--border);
-}
-
-.seats {
-    display: grid;
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-    gap: 10px;
-    max-width: 540px;
-    margin: auto;
-}
-
-.seat {
-    min-height: 38px;
-    border: none;
-    border-radius: 8px 8px 4px 4px;
+.zoom-controls button {
+    width: 36px;
+    height: 36px;
+    background-color: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    color: #334155;
+    font-size: 14px;
     cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+    transition: all 0.2s;
+}
+
+.zoom-controls button:hover {
+    background-color: #f8fafc;
+    color: #0f172a;
+    border-color: #94a3b8;
+}
+
+/* SVG Viewport & Zoom Layer */
+.svg-viewport {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: grab;
+}
+
+.svg-viewport:active {
+    cursor: grabbing;
+}
+
+#hall-svg {
+    width: 85%;
+    height: 85%;
+    max-height: 480px;
+}
+
+#zoom-layer {
+    transform-origin: center center;
+    transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* SVG Kreslo Stili */
+.seat-icon {
+    cursor: pointer;
+    transition: fill 0.2s;
+}
+
+.seat-icon rect {
+    fill: #ffffff;
+    stroke: #1e293b;
+    stroke-width: 1.5;
+}
+
+.seat-icon path {
+    fill: #e2e8f0;
+    stroke: #1e293b;
+    stroke-width: 1.2;
+}
+
+.seat-icon:hover rect {
+    fill: #93c5fd;
+}
+
+.seat-icon.selected rect {
+    fill: #22c55e !important;
+}
+
+.seat-icon.selected path {
+    fill: #16a34a !important;
+}
+
+.seat-icon.occupied {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.seat-icon.occupied rect {
+    fill: #64748b;
+}
+
+/* Tooltip */
+.tooltip {
+    position: absolute;
+    background-color: #0f172a;
     color: #ffffff;
-    font-weight: bold;
-    transition: transform 0.15s, outline 0.15s;
-}
-
-.seat:hover {
-    transform: translateY(-3px);
-}
-
-.seat.vip-seat {
-    background: var(--vip);
-}
-
-.seat.premium-seat {
-    background: var(--premium);
-    color: #24152e;
-}
-
-.seat.standard-seat {
-    background: #aaa0b7;
-    color: #24152e;
-}
-
-.seat.selected {
-    outline: 3px solid #24212b;
-    outline-offset: 3px;
-}
-
-.details {
-    margin-top: 24px;
-    padding: 22px;
-    background: var(--surface);
-    border-radius: 14px;
-    text-align: center;
-}
-
-.details h2 {
-    font-size: 20px;
-    margin-bottom: 8px;
-}
-
-.details p {
-    color: var(--muted);
-}
-
-footer {
-    text-align: center;
-    padding: 24px;
-    color: var(--muted);
-    border-top: 1px solid var(--border);
-}
-
-@media (min-width: 700px) {
-    .seats {
-        grid-template-columns: repeat(8, minmax(0, 1fr));
-    }
-
-    .venue {
-        padding: 32px;
-    }
-}
-
-@media (max-width: 420px) {
-    .venue {
-        padding: 12px;
-    }
-
-    .zone {
-        padding: 12px 8px;
-    }
-
-    .seats {
-        gap: 7px;
-    }
-
-    .seat {
-        min-height: 32px;
-        font-size: 12px;
-    }
-
-    .legend {
-        gap: 16px;
-    }
+    padding: 6px 12px;
+    font-size: 12px;
+    border-radius: 6px;
+    pointer-events: none;
+    display: none;
+    z-index: 20;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }

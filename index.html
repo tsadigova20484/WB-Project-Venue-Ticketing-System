@@ -1,82 +1,79 @@
-
-<!DOCTYPE html>
-<html lang="en">
+=<!DOCTYPE html>
+<html lang="az">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Venue Ticketing System</title>
+    <title>Zal Planı - Oturacaq Seçimi</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <header class="site-header">
-        <h1>Concert Hall</h1>
-        <p>Interactive Venue Ticketing System</p>
-    </header>
 
-    <main class="container">
-        <section class="intro">
-            <h2>Choose Your Seat</h2>
-            <p>Select a seating zone to explore ticket prices.</p>
-        </section>
-
-        <section class="legend" aria-label="Ticket prices">
-            <div class="legend-item">
-                <span class="color-box vip"></span>
-                <div>
-                    <h3>VIP</h3>
-                    <p>150 AZN</p>
+    <div class="main-container">
+        
+        <div class="top-inspector-panel">
+            <div class="inspector-header">
+                <h2><i class="fa-solid fa-circle-info"></i> Seat Details & Inspector</h2>
+                <div class="legend">
+                    <div class="legend-item"><span class="box free"></span> Boş</div>
+                    <div class="legend-item"><span class="box selected"></span> Seçilib</div>
+                    <div class="legend-item"><span class="box occupied"></span> Dolu</div>
                 </div>
             </div>
 
-            <div class="legend-item">
-                <span class="color-box premium"></span>
-                <div>
-                    <h3>Premium</h3>
-                    <p>80 AZN</p>
+            <div class="inspector-content">
+                <div class="selected-seats-box">
+                    <span class="label">Seçilmiş Yerlər:</span>
+                    <div id="selected-list" class="seats-tags">
+                        <span class="empty-msg">Hələ heç bir yer seçilməyib</span>
+                    </div>
+                </div>
+
+                <div class="checkout-box">
+                    <div class="price-info">
+                        <span>Cəmi:</span>
+                        <strong id="total-amount">0</strong> <span>AZN</span>
+                    </div>
+                    <button id="buy-btn" class="buy-btn" disabled>
+                        <i class="fa-solid fa-ticket"></i> Biletləri Al
+                    </button>
                 </div>
             </div>
+        </div>
 
-            <div class="legend-item">
-                <span class="color-box standard"></span>
-                <div>
-                    <h3>Standard</h3>
-                    <p>50 AZN</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="venue">
-            <div class="stage">
-                <span>STAGE</span>
+        <div class="venue-card">
+            <div class="zoom-controls">
+                <button id="zoom-in" title="Böyüt"><i class="fa-solid fa-plus"></i></button>
+                <button id="zoom-out" title="Kiçilt"><i class="fa-solid fa-minus"></i></button>
+                <button id="zoom-reset" title="Sıfırla"><i class="fa-solid fa-rotate-right"></i></button>
             </div>
 
-            <div class="seating-area">
-                <section class="zone vip-zone">
-                    <h3>VIP Zone</h3>
-                    <div class="seats" id="vip-seats"></div>
-                </section>
+            <div class="svg-viewport" id="svg-viewport">
+                <svg id="hall-svg" viewBox="0 0 800 750" xmlns="http://www.w3.org/2000/svg">
+                    <g id="zoom-layer">
+                        <polygon points="250,50 550,50 780,480 600,610 200,610 20,480" 
+                                 fill="#ffffff" stroke="#333333" stroke-width="1.5" stroke-linejoin="round"/>
+                        
+                        <g id="seats-group"></g>
 
-                <section class="zone premium-zone">
-                    <h3>Premium Zone</h3>
-                    <div class="seats" id="premium-seats"></div>
-                </section>
+                        <!-- Daxili səhnəüstü kəsim xətti -->
+                        <polyline points="300,410 500,410 600,480" fill="none" stroke="#333333" stroke-width="1.5"/>
 
-                <section class="zone standard-zone">
-                    <h3>Standard Zone</h3>
-                    <div class="seats" id="standard-seats"></div>
-                </section>
+                        <!-- Əsas Səhnə (Mərkəzi boz trapesiya) -->
+                        <polygon points="300,430 500,430 580,680 220,680" 
+                                 fill="#d1d5db" stroke="#333333" stroke-width="1.5" stroke-linejoin="round"/>
+                        
+                        <rect x="220" y="700" width="360" height="70" 
+                              fill="#9ca3af" stroke="#333333" stroke-width="1.5"/>
+                    </g>
+                </svg>
             </div>
-        </section>
+            
+            <div id="tooltip" class="tooltip"></div>
+        </div>
 
-        <section class="details" aria-live="polite">
-            <h2>Seat Information</h2>
-            <p id="seat-info">Select a seat to see its details.</p>
-        </section>
-    </main>
+    </div>
 
-    <footer>
-        <p>Web &amp; Mobile I Student Project</p>
-    </footer>
+    <script src="script.js"></script>
 </body>
 </html>
